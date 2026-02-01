@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: ticket
+      POSTGRES_USER: ticket
+      POSTGRES_PASSWORD: ticket
+
+    volumes:
+      - ticket_postgres-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    ports:
+      - "8888:8080"
+    depends_on:
+      - db
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command:
+    - start-dev
+    - --db=dev-file
+    ports:
+      - "9090:8080"
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: db
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: ticket
+      KC_DB_USERNAME: ticket
+      KC_DB_PASSWORD: ticket
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    depends_on:
+      - db
+    volumes:
+      - ticket_keycloak-data:/opt/keycloak/data
+
+volumes:
+  ticket_postgres-data:
+  ticket_keycloak-data:
