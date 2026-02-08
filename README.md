@@ -205,21 +205,4 @@ This platform can be extended with:
 * Improved admin controls
 * CI/CD and cloud deployment
 
----
 
-## 👋 About the Author
-
-Built by **Tavan Mohammed**
-This project reflects my interest in **full-stack development**, **backend architecture**, and building systems that resemble real production applications rather than simple demos.
-
-GitHub: [https://github.com/tavanmohammed](https://github.com/tavanmohammed)
-
----
-
-## 📄 License
-
-This project is open-source and available under the **MIT License**.
-
-
-
-Just tell me — you did a great job getting this far 👏
